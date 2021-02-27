@@ -92,4 +92,6 @@ public class AntLife_FSM : FiniteStateMachine
             Destroy(food);
         }
     }
+
+   
 }

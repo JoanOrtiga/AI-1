@@ -52,13 +52,33 @@ public class LadybugGoForFood_State : FiniteStateMachine
                 ChangeState(State.PERSUE);
                 break;
             case State.PERSUE:
-                if(SensingUtils.DistanceToTarget(gameObject, lbBlackboard.antTarget) < lbBlackboard.distanceToKill)
+                if (SensingUtils.DistanceToTarget(gameObject, lbBlackboard.antTarget) < lbBlackboard.distanceToKill)
                 {
                     lbBlackboard.antTarget.transform.parent = transform;
-                    ChangeState(State.BRINGBASE);
+                    if (lbBlackboard.hunger > lbBlackboard.needToEatThreshold)
+                    {
+                        ChangeState(State.EAT);
+                    }
+                    else
+                    {
+                        ChangeState(State.BRINGBASE);
+                    }
+
                 }
                 break;
             case State.BRINGBASE:
+                if (lbBlackboard.hunger > lbBlackboard.needToEatThreshold)
+                {
+                    ChangeState(State.EAT);
+                }
+
+                arriveAvoid.target = lbBlackboard.nest.FoodTarget();
+
+                if(SensingUtils.DistanceToTarget(gameObject, arriveAvoid.target) < lbBlackboard.distanceToInteract)
+                {
+
+                }
+
                 break;
             case State.EAT:
                 break;
@@ -79,8 +99,6 @@ public class LadybugGoForFood_State : FiniteStateMachine
                 break;
             case State.EAT:
                 break;
-            default:
-                break;
         }
 
         switch (newState)
@@ -93,11 +111,9 @@ public class LadybugGoForFood_State : FiniteStateMachine
                 break;
             case State.BRINGBASE:
                 arriveAvoid.enabled = true;
-                arriveAvoid.target = lbBlackboard.nest;
+                arriveAvoid.target = lbBlackboard.nest.FoodTarget();
                 break;
             case State.EAT:
-                break;
-            default:
                 break;
         }
 

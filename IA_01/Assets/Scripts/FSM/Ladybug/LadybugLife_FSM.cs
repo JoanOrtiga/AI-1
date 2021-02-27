@@ -42,6 +42,8 @@ public class LadybugLife_FSM : FiniteStateMachine
 
     private void Update()
     {
+        UpdateHunger();
+
         switch (currentState)
         {
             case State.INITIAL:
@@ -97,5 +99,10 @@ public class LadybugLife_FSM : FiniteStateMachine
         }
 
         currentState = newState;
+    }
+
+    private void UpdateHunger()
+    {
+        lbBlackboard.hunger += lbBlackboard.hungerInc * Time.deltaTime;
     }
 }
