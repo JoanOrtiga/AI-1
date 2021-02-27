@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using FSM;
+using Steerings;
 
 [RequireComponent(typeof(LadybugBlackboard))]
+[RequireComponent(typeof(WanderPlusAvoid))]
 public class LadybugLife_FSM : FiniteStateMachine
 {
     public enum State
     {
-        INITIAL, IDLE, GOFORFOOD
+        INITIAL, IDLE, WANDER, GOFORFOOD
     }
 
     public State currentState = State.INITIAL;
@@ -16,17 +18,19 @@ public class LadybugLife_FSM : FiniteStateMachine
     private LadybugBlackboard lbBlackboard;
 
     private LadybugGoForFood_State goForFood;
+    private WanderPlusAvoid wanderAvoid;
 
     private void Awake()
     {
         lbBlackboard = GetComponent<LadybugBlackboard>();
 
         goForFood = GetComponent<LadybugGoForFood_State>();
+        wanderAvoid = GetComponent<WanderPlusAvoid>();
     }
 
     public override void Exit()
     {
-        goForFood.enabled = false;
+        goForFood.Exit();
         base.Exit();
     }
     
@@ -45,7 +49,19 @@ public class LadybugLife_FSM : FiniteStateMachine
                 break;
             case State.IDLE:
                 break;
+            case State.WANDER:
+                lbBlackboard.antTarget = SensingUtils.FindInstanceWithinRadius(gameObject, "ANT", lbBlackboard.seeDistance);
+                if(lbBlackboard.antTarget != null)
+                {
+                    ChangeState(State.GOFORFOOD);
+                }
+                break;
             case State.GOFORFOOD:
+                lbBlackboard.antTarget = SensingUtils.FindInstanceWithinRadius(gameObject, "ANT", lbBlackboard.seeDistance);
+                if (lbBlackboard.antTarget == null)
+                {
+                    ChangeState(State.WANDER);
+                }
                 break;
         }
     }
@@ -58,7 +74,11 @@ public class LadybugLife_FSM : FiniteStateMachine
                 break;
             case State.IDLE:
                 break;
+            case State.WANDER:
+                wanderAvoid.enabled = false;
+                break;
             case State.GOFORFOOD:
+                goForFood.Exit();
                 break;
         }
 
@@ -68,8 +88,11 @@ public class LadybugLife_FSM : FiniteStateMachine
                 break;
             case State.IDLE:
                 break;
+            case State.WANDER:
+                wanderAvoid.enabled = true;
+                break;
             case State.GOFORFOOD:
-                goForFood.enabled = true;
+                goForFood.ReEnter();
                 break;
         }
 
