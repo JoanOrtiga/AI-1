@@ -485,6 +485,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rat
       objectReference: {fileID: 0}
+    - target: {fileID: 4998636440309408570, guid: 3ca928f22d2576e4e8a82e086165388a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 4998636440309408572, guid: 3ca928f22d2576e4e8a82e086165388a,
         type: 3}
       propertyPath: m_LocalPosition.x

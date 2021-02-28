@@ -33,7 +33,7 @@ public class Hide : MonoBehaviour
     {
       
         GameObject hidingSpot = GetHidingPosition();
-                
+
         return arrive.GetSteering(hidingSpot);
     }
     GameObject GetHidingPosition()
