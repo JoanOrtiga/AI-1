@@ -57,6 +57,7 @@ public class LadybugGoForFood_State : FiniteStateMachine
                 if (SensingUtils.DistanceToTarget(gameObject, lbBlackboard.antTarget) < lbBlackboard.distanceToKill)
                 {
                     lbBlackboard.antTarget.transform.parent = transform;
+                    lbBlackboard.transportingFood = true;
                     ChangeState(State.MANAGEFOOD);
                     /*
                     if (lbBlackboard.hunger > lbBlackboard.needToEatThreshold)
@@ -71,26 +72,10 @@ public class LadybugGoForFood_State : FiniteStateMachine
                 }
                 break;
             case State.MANAGEFOOD:
-             /*   if (lbBlackboard.hunger > lbBlackboard.needToEatThreshold)
+                if (!lbBlackboard.transportingFood)
                 {
-                    ChangeState(State.EAT);
+                    
                 }
-
-                arriveAvoid.target = lbBlackboard.nest.FoodTarget();
-
-                if(SensingUtils.DistanceToTarget(gameObject, arriveAvoid.target) < lbBlackboard.distanceToInteract)
-                {
-                    if (lbBlackboard.nest.ChildNeedFood())
-                    {
-                        lbBlackboard.nest.GiveFood();
-                    }
-                    else
-                    { 
-                        lbBlackboard.nest.savedFood++;
-                    }
-
-                    Destroy(lbBlackboard.antTarget);
-                }*/
                 break;
         }
     }
@@ -105,7 +90,6 @@ public class LadybugGoForFood_State : FiniteStateMachine
                 arriveAvoid.enabled = false;
                 break;
             case State.MANAGEFOOD:
-                arriveAvoid.enabled = false;
                 manageFood.Exit();
                 break;
         }
@@ -119,9 +103,7 @@ public class LadybugGoForFood_State : FiniteStateMachine
                 arriveAvoid.target = lbBlackboard.antTarget;
                 break;
             case State.MANAGEFOOD:
-                arriveAvoid.enabled = true;
-                manageFood.ReEnter();
-                arriveAvoid.target = lbBlackboard.nest.FoodTarget();
+                manageFood.ReEnter();                
                 break;
         }
 
