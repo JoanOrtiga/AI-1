@@ -48,7 +48,8 @@ public class SensingUtils
 
     }
 
-    public static float DistanceToTarget (GameObject me, GameObject target) {
+    public static float DistanceToTarget (GameObject me, GameObject target) 
+    {
 		return (target.transform.position - me.transform.position).magnitude;
 	}
 }
