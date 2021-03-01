@@ -24,6 +24,8 @@ public class LadybugManageFood_State : FiniteStateMachine
         lbBlackboard = GetComponent<LadybugBlackboard>();
 
         arriveAvoid = GetComponent<ArrivePlusAvoid>();
+
+        arriveAvoid.enabled = false;
     }
 
     public override void Exit()
@@ -47,11 +49,18 @@ public class LadybugManageFood_State : FiniteStateMachine
                 break;
             case State.EAT:
                 lbBlackboard.eatElapsedTime -= Time.deltaTime;
-                lbBlackboard.transportingFood = false;
-                Destroy(lbBlackboard.antTarget);
+
+                if (lbBlackboard.eatElapsedTime <= 0)
+                {
+                    lbBlackboard.hunger = 0;
+                    lbBlackboard.transportingFood = false;
+                    Destroy(lbBlackboard.antTarget);
+                }
+
+             
                 break;
             case State.BRINGBASE:
-                if(lbBlackboard.hunger > lbBlackboard.needToEatThreshold)
+                if (lbBlackboard.hunger > lbBlackboard.needToEatThreshold)
                 {
                     ChangeState(State.EAT);
                 }
@@ -72,7 +81,6 @@ public class LadybugManageFood_State : FiniteStateMachine
                     lbBlackboard.transportingFood = false;
                     Destroy(lbBlackboard.antTarget);
                 }
-
                 break;
         }
     }
@@ -86,6 +94,7 @@ public class LadybugManageFood_State : FiniteStateMachine
             case State.EAT:
                 break;
             case State.BRINGBASE:
+                arriveAvoid.enabled = false;
                 break;
         }
 
@@ -97,6 +106,8 @@ public class LadybugManageFood_State : FiniteStateMachine
                 lbBlackboard.eatElapsedTime = lbBlackboard.eatingTime;
                 break;
             case State.BRINGBASE:
+                arriveAvoid.closeEnoughRadius = lbBlackboard.distanceToInteract;
+                arriveAvoid.enabled = true;
                 break;
         }
 

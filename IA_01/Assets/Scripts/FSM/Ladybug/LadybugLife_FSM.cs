@@ -6,11 +6,12 @@ using Steerings;
 
 [RequireComponent(typeof(LadybugBlackboard))]
 [RequireComponent(typeof(WanderPlusAvoid))]
+[RequireComponent(typeof(LadybugGoForFood_State))]
 public class LadybugLife_FSM : FiniteStateMachine
 {
     public enum State
     {
-        INITIAL, IDLE, WANDER, GOFORFOOD
+        INITIAL, REST, WANDER, GOFORFOOD
     }
 
     public State currentState = State.INITIAL;
@@ -26,14 +27,20 @@ public class LadybugLife_FSM : FiniteStateMachine
 
         goForFood = GetComponent<LadybugGoForFood_State>();
         wanderAvoid = GetComponent<WanderPlusAvoid>();
+
+      
+
+        wanderAvoid.enabled = false;
+        goForFood.enabled = false;
     }
 
     public override void Exit()
     {
+        wanderAvoid.enabled = false;
         goForFood.Exit();
         base.Exit();
     }
-    
+
     public override void ReEnter()
     {
         currentState = State.INITIAL;
@@ -47,19 +54,28 @@ public class LadybugLife_FSM : FiniteStateMachine
         switch (currentState)
         {
             case State.INITIAL:
-                ChangeState(State.IDLE);
+                ChangeState(State.REST);
                 break;
-            case State.IDLE:
+
+            case State.REST:
+                lbBlackboard.restElapsedTime -= Time.deltaTime;
+
+                if (lbBlackboard.restElapsedTime <= 0)
+                    ChangeState(State.WANDER);
                 break;
+
             case State.WANDER:
                 lbBlackboard.antTarget = SensingUtils.FindInstanceWithinRadius(gameObject, "ANT", lbBlackboard.seeDistance);
-                if(lbBlackboard.antTarget != null)
+
+                if (lbBlackboard.antTarget != null)
                 {
                     ChangeState(State.GOFORFOOD);
                 }
                 break;
+
             case State.GOFORFOOD:
                 lbBlackboard.antTarget = SensingUtils.FindInstanceWithinRadius(gameObject, "ANT", lbBlackboard.seeDistance);
+
                 if (lbBlackboard.antTarget == null)
                 {
                     ChangeState(State.WANDER);
@@ -74,7 +90,7 @@ public class LadybugLife_FSM : FiniteStateMachine
         {
             case State.INITIAL:
                 break;
-            case State.IDLE:
+            case State.REST:
                 break;
             case State.WANDER:
                 wanderAvoid.enabled = false;
@@ -88,7 +104,8 @@ public class LadybugLife_FSM : FiniteStateMachine
         {
             case State.INITIAL:
                 break;
-            case State.IDLE:
+            case State.REST:
+                lbBlackboard.restElapsedTime = lbBlackboard.restingTime;
                 break;
             case State.WANDER:
                 wanderAvoid.enabled = true;

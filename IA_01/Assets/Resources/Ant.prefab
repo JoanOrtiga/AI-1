@@ -74,12 +74,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4f8b4ad5210363f4791149472898f54a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8e0491551268b8141b814c2a7edf72c1, type: 3}
   m_Color: {r: 0.5, g: 0.26179245, b: 0.28022704, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 5.96, y: 4.26}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseAttractor: {fileID: 0}
-  takeFoodRadius: 5
+  takeFoodRadius: 8
   antSpawner: {fileID: 0}
 --- !u!114 &5497769665715003032
 MonoBehaviour:
@@ -113,9 +113,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxAcceleration: 60
-  maxSpeed: 20
-  maxAngularAcceleration: 45
-  maxAngularSpeed: 45
+  maxSpeed: 15
+  maxAngularAcceleration: 120
+  maxAngularSpeed: 120
   position: {x: 0, y: 0, z: 0}
   orientation: 0
   linearVelocity: {x: 0, y: 0, z: 0}
@@ -136,16 +136,16 @@ MonoBehaviour:
   attractor: {fileID: 0}
   idTag: ANT
   cohesionThreshold: 40
-  repulsionThreshold: 20
+  repulsionThreshold: 15
   wanderRate: 20
-  seekWeight: 0.17
+  seekWeight: 0.23
   vmWeight: 0.08
   rpWeight: 0.46
   coWeight: 0.23
   wdWeight: 0.23
   showWhisker: 1
-  lookAheadLength: 10
-  avoidDistance: 10
+  lookAheadLength: 13
+  avoidDistance: 15
   secondaryWhiskerAngle: 30
   secondaryWhiskerRatio: 0.7
 --- !u!114 &5497769665715003110

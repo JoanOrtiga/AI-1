@@ -19,6 +19,9 @@ public class LadybugBlackboard : MonoBehaviour
     public float eatingTime = 4f;
     public float eatElapsedTime;
 
+    public float restingTime = 3f;
+    public float restElapsedTime;
+
     private void Awake()
     {
         if(nest == null)
