@@ -28,7 +28,7 @@ namespace Steerings
 			// no KS? get it
 			if (this.ownKS==null) this.ownKS = GetComponent<KinematicState>();
 
-			SteeringOutput result = WanderPlusAvoid.GetSteering (this.ownKS, wanderRate, wanderRate, wanderOffset, ref targetOrientation, 
+			SteeringOutput result = WanderPlusAvoid.GetSteering (this.ownKS, wanderRate, wanderRadius, wanderOffset, ref targetOrientation, 
 				showWhisker, lookAheadLength, avoidDistance, secondaryWhiskerAngle, secondaryWhiskerRatio, ref avoidActive);
 			base.applyRotationalPolicy (rotationalPolicy, result, null);
 			return result;
@@ -36,11 +36,11 @@ namespace Steerings
 
 		public static SteeringOutput GetSteering (KinematicState ownKS,
 			float WanderRate, float wanderRadius, float wanderOffset, ref float targetOrientation,
-			bool showWhishker, float lookAheadLength, float avoidDistance, float secondaryWhiskerAngle, float secondaryWhiskerRatio,
+			bool showWhisker, float lookAheadLength, float avoidDistance, float secondaryWhiskerAngle, float secondaryWhiskerRatio,
 			ref bool avoidActive) {
 
 			// give priority to obstacle avoidance
-			SteeringOutput so = ObstacleAvoidance.GetSteering(ownKS, showWhishker, lookAheadLength, 
+			SteeringOutput so = ObstacleAvoidance.GetSteering(ownKS, showWhisker, lookAheadLength, 
 				                                               avoidDistance, secondaryWhiskerAngle, secondaryWhiskerRatio);
 
 			if (so == NULL_STEERING) {
