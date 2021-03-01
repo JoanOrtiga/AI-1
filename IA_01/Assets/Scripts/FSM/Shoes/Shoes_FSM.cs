@@ -11,24 +11,24 @@ public class Shoes_FSM : FiniteStateMachine
 {
     public enum State
     {
-        INITIAL, WANDER, AVOID
+        INITIAL, WANDER
     }
 
     public State currentState = State.INITIAL;
 
     private ShoesBlackboard shoesBlackboard;
-    private WanderAroundPlusAvoid wanderAroundPlusAvoid;
+    private WanderPlusAvoid wanderPlusAvoid;
 
     private void Awake()
     {
         shoesBlackboard = GetComponent<ShoesBlackboard>();
-        wanderAroundPlusAvoid = GetComponent<WanderAroundPlusAvoid>();
-        wanderAroundPlusAvoid.enabled = false;
+        wanderPlusAvoid = GetComponent<WanderPlusAvoid>();
+        wanderPlusAvoid.enabled = false;
     }
 
     public override void Exit()
     {
-        wanderAroundPlusAvoid.enabled = false;
+        wanderPlusAvoid.enabled = false;
         base.Exit();
     }
 
@@ -58,22 +58,18 @@ public class Shoes_FSM : FiniteStateMachine
         switch (currentState)
         {
             case State.WANDER:
-                wanderAroundPlusAvoid.enabled = false;
-                break;
-            case State.AVOID:
-                
+                wanderPlusAvoid.enabled = false;
                 break;
         }
 
         switch(newState)
         {
             case State.WANDER:
-                wanderAroundPlusAvoid.enabled = true;
-                break;
-            case State.AVOID:
-
+                wanderPlusAvoid.enabled = true;
                 break;
         }
+
+        currentState = newState;
     }
 
     void Wander()
