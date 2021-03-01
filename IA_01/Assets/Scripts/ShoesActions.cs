@@ -4,13 +4,24 @@ using UnityEngine;
 
 public class ShoesActions : MonoBehaviour
 {
-    public GameObject shoeL, shoeR;
+    public GameObject food;
     public float radius = 10f;
+
+    private GameObject shoeL, shoeR, foodSpawn;
+    private float counter = 0f;
+
+    private void Start()
+    {
+        shoeL = transform.GetChild(0).gameObject;
+        shoeR = transform.GetChild(1).gameObject;
+        foodSpawn = transform.GetChild(2).gameObject;
+    }
 
     private void Update()
     {
         ShoeRKillingWithRadius();
         ShoeLKillingWithRadius();
+        DropFood();
     }
 
     public void ShoeRKillingWithRadius()
@@ -30,5 +41,21 @@ public class ShoesActions : MonoBehaviour
         {
             Destroy(ant);
         }
+    }
+
+    public void DropFood()
+    {
+        counter += Time.deltaTime;
+
+        if (counter >= 10f)
+        {
+            Instantiate(food, foodSpawn.transform.position, foodSpawn.transform.rotation);
+            counter = 0f;
+        }
+    }
+
+    public void Avoidance()
+    {
+        
     }
 }
