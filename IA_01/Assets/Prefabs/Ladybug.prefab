@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 3f49521d4faca8b4ca6b891d770089a9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 6, y: 5.94}
@@ -100,14 +100,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd8d0ff1708300c408d591865857c8d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seeDistance: 10
+  seeDistance: 300
   antTarget: {fileID: 0}
   transportingFood: 0
-  distanceToInteract: 3
-  distanceToKill: 3
+  distanceToInteract: 15
+  distanceToKill: 13
   nest: {fileID: 0}
   hunger: 0
-  hungerInc: 0.01
+  hungerInc: 0.05
   needToEatThreshold: 10
   eatingTime: 4
   eatElapsedTime: 0
@@ -125,10 +125,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f7cbbdf0d23565448d7ea26fd3b99ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAcceleration: 2
-  maxSpeed: 10
-  maxAngularAcceleration: 45
-  maxAngularSpeed: 45
+  maxAcceleration: 7
+  maxSpeed: 20
+  maxAngularAcceleration: 180
+  maxAngularSpeed: 180
   position: {x: 0, y: 0, z: 0}
   orientation: 0
   linearVelocity: {x: 0, y: 0, z: 0}
@@ -149,8 +149,8 @@ MonoBehaviour:
   wanderRadius: 10
   wanderOffset: 20
   showWhisker: 1
-  lookAheadLength: 10
-  avoidDistance: 10
+  lookAheadLength: 20
+  avoidDistance: 25
   secondaryWhiskerAngle: 30
   secondaryWhiskerRatio: 0.7
   rotationalPolicy: 1
@@ -167,12 +167,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  closeEnoughRadius: 5
-  slowDownRadius: 20
+  closeEnoughRadius: 15
+  slowDownRadius: 25
   timeToDesiredSpeed: 0.1
   showWhisker: 1
-  lookAheadLength: 10
-  avoidDistance: 10
+  lookAheadLength: 20
+  avoidDistance: 25
   secondaryWhiskerAngle: 30
   secondaryWhiskerRatio: 0.7
   rotationalPolicy: 1
