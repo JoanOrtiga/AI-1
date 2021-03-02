@@ -57,11 +57,17 @@ public class LadybugGoForFood_State : FiniteStateMachine
                 ChangeState(State.PERSUE);
                 break;
             case State.PERSUE:
+
+                if (lbBlackboard.antTarget == null)
+                    break;
+
                 if (SensingUtils.DistanceToTarget(gameObject, lbBlackboard.antTarget) < lbBlackboard.distanceToKill && !lbBlackboard.transportingFood)
                 {
                     lbBlackboard.antTarget.transform.parent = transform;
                     lbBlackboard.antTarget.transform.position = transform.position;
-                    lbBlackboard.antTarget.GetComponent<AntLife_FSM>().Exit();
+                    lbBlackboard.antTarget.GetComponent<AntLife_FSM>().Die();
+                    lbBlackboard.antTarget.tag = "ANT_DEAD";
+
                     lbBlackboard.transportingFood = true;
                     ChangeState(State.MANAGEFOOD);
                 }

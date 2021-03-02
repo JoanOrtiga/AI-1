@@ -76,6 +76,8 @@ public class LadybugLife_FSM : FiniteStateMachine
             case State.GOFORFOOD:
                 lbBlackboard.antTarget = SensingUtils.FindInstanceWithinRadius(gameObject, "ANT", lbBlackboard.seeDistance);
 
+                Debug.Log(lbBlackboard.antTarget.name);
+
                 if (lbBlackboard.antTarget == null)
                 {
                     ChangeState(State.WANDER);

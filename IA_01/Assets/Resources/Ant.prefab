@@ -136,9 +136,9 @@ MonoBehaviour:
   attractor: {fileID: 0}
   idTag: ANT
   cohesionThreshold: 40
-  repulsionThreshold: 15
-  wanderRate: 20
-  seekWeight: 0.23
+  repulsionThreshold: 30
+  wanderRate: 30
+  seekWeight: 0.2
   vmWeight: 0.08
   rpWeight: 0.46
   coWeight: 0.23

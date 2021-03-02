@@ -9,6 +9,7 @@ public class AntBlackboard : MonoBehaviour
     public float takeFoodRadius = 1f;
     public AntSpawner antSpawner;
 
+    public static Score score;
 
     private void Awake()
     {
@@ -28,6 +29,11 @@ public class AntBlackboard : MonoBehaviour
             {
                 Debug.LogError("No ant spawner found");
             }
+        }
+
+        if(score == null)
+        {
+            score = FindObjectOfType<Score>();
         }
     }
     /*

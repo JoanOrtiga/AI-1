@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ANT
   - Food
+  - ANT_DEAD
   layers:
   - Default
   - TransparentFX

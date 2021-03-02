@@ -34,9 +34,6 @@ public class MouseAttractor : MonoBehaviour
         {
             Vector3 cp = cameraBounds.ClosestPoint(transform.position);
 
-            print(cp);
-            print(transform.position);
-
             transform.position -= new Vector3(transform.position.x - cp.x, transform.position.y - cp.y);
           
         }
