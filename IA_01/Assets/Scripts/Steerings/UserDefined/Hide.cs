@@ -6,11 +6,11 @@ using UnityEngine;
 
 public class Hide : SteeringBehaviour
 {
+    [Header("ALGORITHM VARS")]
     public float findHideSpotRadius = 20f;
     public string hideObjectsTag = "OBSTACLES";
     public float detectEnemyRadius = 40f;
     public string enemyTag = "Enemy";
-
     public float hideOffset = 5f;
 
     [Header("ARRIVE")]
@@ -33,7 +33,6 @@ public class Hide : SteeringBehaviour
     public override SteeringOutput GetSteering()
     {
         if (this.ownKS == null) this.ownKS = GetComponent<KinematicState>();
-
         SteeringOutput result = Hide.GetSteering(this.ownKS, findHideSpotRadius, hideObjectsTag, enemyTag, detectEnemyRadius, hideOffset, showWhisker, lookAheadLength, avoidDistance, secondaryWhiskerAngle, secondaryWhiskerRatio, closeEnoughRadius, slowDownRadius, timeToDesiredSpeed);
         base.applyRotationalPolicy(rotationalPolicy, result);
         return result;
@@ -59,10 +58,10 @@ public class Hide : SteeringBehaviour
 
         GameObject hideSpot = SensingUtils.FindInstanceWithinRadius(ownKS.gameObject, hideTag, findHideSpotRadius);
 
-        if (hideSpot != null)
+        if (hideSpot == null)
         {
             result = FleePlusAvoid.GetSteering(ownKS, enemy, showWhishker, lookAheadLength, avoidDistance, secondaryWhiskerAngle, secondaryWhiskerRatio);
-
+            print("aa");
             return result;
         }
 
@@ -75,6 +74,7 @@ public class Hide : SteeringBehaviour
                 if (hideSpot.transform.GetChild(i).name == "hideSpot")
                 {
                     hidingPosition = hideSpot.transform.GetChild(i).gameObject;
+
                 }
             }
         }
@@ -82,6 +82,7 @@ public class Hide : SteeringBehaviour
         {
             hidingPosition = new GameObject("hideSpot");
             hidingPosition.transform.SetParent(hideSpot.transform);
+
         }
 
         CircleCollider2D circle = hideSpot.GetComponent<CircleCollider2D>();
