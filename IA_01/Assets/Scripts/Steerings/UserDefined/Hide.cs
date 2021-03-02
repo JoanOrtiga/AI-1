@@ -33,7 +33,6 @@ public class Hide : SteeringBehaviour
     public override SteeringOutput GetSteering()
     {
         if (this.ownKS == null) this.ownKS = GetComponent<KinematicState>();
-
         SteeringOutput result = Hide.GetSteering(this.ownKS, findHideSpotRadius, hideObjectsTag, enemyTag, detectEnemyRadius, hideOffset, showWhisker, lookAheadLength, avoidDistance, secondaryWhiskerAngle, secondaryWhiskerRatio, closeEnoughRadius, slowDownRadius, timeToDesiredSpeed);
         base.applyRotationalPolicy(rotationalPolicy, result);
         return result;
@@ -59,14 +58,15 @@ public class Hide : SteeringBehaviour
 
         GameObject hideSpot = SensingUtils.FindInstanceWithinRadius(ownKS.gameObject, hideTag, findHideSpotRadius);
 
-        if (hideSpot != null)
+        if (hideSpot == null)
         {
             result = FleePlusAvoid.GetSteering(ownKS, enemy, showWhishker, lookAheadLength, avoidDistance, secondaryWhiskerAngle, secondaryWhiskerRatio);
-
+            print("aa");
             return result;
         }
 
         GameObject hidingPosition = null;
+        print("1");
 
         if (hideSpot.transform.childCount != 0)
         {
@@ -75,6 +75,8 @@ public class Hide : SteeringBehaviour
                 if (hideSpot.transform.GetChild(i).name == "hideSpot")
                 {
                     hidingPosition = hideSpot.transform.GetChild(i).gameObject;
+                    print("2");
+
                 }
             }
         }
@@ -82,6 +84,8 @@ public class Hide : SteeringBehaviour
         {
             hidingPosition = new GameObject("hideSpot");
             hidingPosition.transform.SetParent(hideSpot.transform);
+            print("3");
+
         }
 
         CircleCollider2D circle = hideSpot.GetComponent<CircleCollider2D>();

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - ANT
   - Food
+  - Zapatos
+  - Obstaculo
   layers:
   - Default
   - TransparentFX
