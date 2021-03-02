@@ -794,34 +794,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 416aa90d1042c4445b50c67054ab4a64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &772898826 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5736374779335585869, guid: 9890e968429c82c429d97c02124875e5,
-    type: 3}
-  m_PrefabInstance: {fileID: 1019396511071446678}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &772898827
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 772898826}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45002cd8b796da941835ae15d6a0419a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  closeEnoughRadius: 5
-  slowDownRadius: 20
-  timeToDesiredSpeed: 0.1
-  showWhisker: 1
-  lookAheadLength: 10
-  avoidDistance: 10.36
-  secondaryWhiskerAngle: 30
-  secondaryWhiskerRatio: 0.7
-  rotationalPolicy: 1
 --- !u!1001 &980264906
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1634,16 +1606,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 438725271859969560, guid: 9890e968429c82c429d97c02124875e5,
-        type: 3}
-      propertyPath: dropFoodRadius
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 438725271859969560, guid: 9890e968429c82c429d97c02124875e5,
-        type: 3}
-      propertyPath: takeFoodRadius
-      value: 40
-      objectReference: {fileID: 0}
     - target: {fileID: 1640453140472709844, guid: 9890e968429c82c429d97c02124875e5,
         type: 3}
       propertyPath: m_RootOrder
@@ -1704,8 +1666,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spdier
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 508378394, guid: 9890e968429c82c429d97c02124875e5, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9890e968429c82c429d97c02124875e5, type: 3}
 --- !u!1001 &2317696889728350632
 PrefabInstance:
