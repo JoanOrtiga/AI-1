@@ -61,7 +61,6 @@ public class Hide : SteeringBehaviour
         if (hideSpot == null)
         {
             result = FleePlusAvoid.GetSteering(ownKS, enemy, showWhishker, lookAheadLength, avoidDistance, secondaryWhiskerAngle, secondaryWhiskerRatio);
-            print("aa");
             return result;
         }
 
