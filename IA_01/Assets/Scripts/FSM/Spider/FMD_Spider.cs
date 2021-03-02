@@ -47,21 +47,24 @@ public class FMD_Spider : FiniteStateMachine
 
     public void Choosing()
     {
+        print("Choosing");
         blackboard.food = GameObject.FindGameObjectsWithTag("Food");
 
         randomFood = Random.Range(0, blackboard.food.Length);
-        gameObject.GetComponent<Seek>().target = blackboard.food[randomFood];
+        gameObject.GetComponent<ArrivePlusAvoid>().target = blackboard.food[randomFood];
         currentState = State.SEARCHING;
     }
 
     public void Serching()
     {
-        if (gameObject.GetComponent<Seek>().target == null)
+        print("Serch");
+        if (gameObject.GetComponent<ArrivePlusAvoid>().target == null)
         {
             currentState = State.CHOOSING;
         }
         else
         {
+            
             dist = Vector3.Distance(blackboard.food[randomFood].transform.position, this.gameObject.transform.position);
 
             if (dist < blackboard.takeFoodRadius)
@@ -76,9 +79,10 @@ public class FMD_Spider : FiniteStateMachine
 
     public void Returning()
     {
+        print("Return");
         dist = Vector3.Distance(blackboard.spiderHouse.transform.position, this.gameObject.transform.position);
         transform.position = Vector3.MoveTowards(transform.position, blackboard.spiderHouse.transform.position, blackboard.speed * Time.deltaTime);
-        gameObject.GetComponent<Seek>().target = blackboard.spiderHouse;
+        gameObject.GetComponent<ArrivePlusAvoid>().target = blackboard.spiderHouse;
 
         if (dist < blackboard.dropFoodRadius)
         {
