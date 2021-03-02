@@ -30,6 +30,10 @@ public class Rats_FSM : FiniteStateMachine
         wanderPlusAvoid.enabled = false;
         hide.enabled = false;
         hide.detectEnemyRadius = ratBlackboard.enemyRadius;
+        hide.hideOffset = ratBlackboard.hideOffset;
+        hide.findHideSpotRadius = ratBlackboard.HideSpotRadius;
+        hide.enemyTag = ratBlackboard.enemyTag;
+        hide.hideObjectsTag = ratBlackboard.obstacleTag;
     }
 
     public override void Exit()

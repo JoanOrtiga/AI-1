@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 6987848075501309806}
   m_Layer: 0
   m_Name: Rat
-  m_TagString: ANT
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -153,8 +153,8 @@ MonoBehaviour:
   wanderRadius: 10
   wanderOffset: 20
   showWhisker: 1
-  lookAheadLength: 30
-  avoidDistance: 40
+  lookAheadLength: 40
+  avoidDistance: 60
   secondaryWhiskerAngle: 30
   secondaryWhiskerRatio: 0.7
   rotationalPolicy: 1
@@ -170,14 +170,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ed689b24860cca4087dbbe0ca14c44a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  findHideSpotRadius: 600
+  findHideSpotRadius: 400
   hideObjectsTag: Obstaculo
   detectEnemyRadius: 40
   enemyTag: Zapatos
-  hideOffset: 30
-  closeEnoughRadius: 15
-  slowDownRadius: 20
-  timeToDesiredSpeed: 0.1
+  hideOffset: 33
+  closeEnoughRadius: 20
+  slowDownRadius: 23
+  timeToDesiredSpeed: 0.01
   showWhisker: 1
   lookAheadLength: 40
   avoidDistance: 60
@@ -197,9 +197,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Rat: {fileID: 4998636440309408570}
-  radius: 10
+  HideSpotRadius: 300
   enemyTag: Zapatos
+  obstacleTag: Obstaculo
   enemyRadius: 200
+  hideOffset: 33
 --- !u!114 &6987848075501309806
 MonoBehaviour:
   m_ObjectHideFlags: 0

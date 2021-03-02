@@ -2171,6 +2171,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4998636440309408572, guid: 3ca928f22d2576e4e8a82e086165388a,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998636440309408572, guid: 3ca928f22d2576e4e8a82e086165388a,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: -25.3
       objectReference: {fileID: 0}
@@ -2183,6 +2188,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4998636440309408572, guid: 3ca928f22d2576e4e8a82e086165388a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5223908
       objectReference: {fileID: 0}
     - target: {fileID: 4998636440309408572, guid: 3ca928f22d2576e4e8a82e086165388a,
         type: 3}
@@ -2201,16 +2211,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4998636440309408572, guid: 3ca928f22d2576e4e8a82e086165388a,
         type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.5223908
-      objectReference: {fileID: 0}
-    - target: {fileID: 4998636440309408572, guid: 3ca928f22d2576e4e8a82e086165388a,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4998636440309408572, guid: 3ca928f22d2576e4e8a82e086165388a,
-        type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
@@ -2226,13 +2226,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6987848075501309807, guid: 3ca928f22d2576e4e8a82e086165388a,
         type: 3}
-      propertyPath: radius
-      value: 5000
+      propertyPath: hideOffset
+      value: 33
+      objectReference: {fileID: 0}
+    - target: {fileID: 6987848075501309807, guid: 3ca928f22d2576e4e8a82e086165388a,
+        type: 3}
+      propertyPath: obstacleTag
+      value: Obstaculo
+      objectReference: {fileID: 0}
+    - target: {fileID: 6987848075501309807, guid: 3ca928f22d2576e4e8a82e086165388a,
+        type: 3}
+      propertyPath: HideSpotRadius
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 6987848075501309808, guid: 3ca928f22d2576e4e8a82e086165388a,
         type: 3}
-      propertyPath: findHideSpotRadius
-      value: 400
+      propertyPath: slowDownRadius
+      value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 6987848075501309808, guid: 3ca928f22d2576e4e8a82e086165388a,
+        type: 3}
+      propertyPath: timeToDesiredSpeed
+      value: 0.01
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ca928f22d2576e4e8a82e086165388a, type: 3}
