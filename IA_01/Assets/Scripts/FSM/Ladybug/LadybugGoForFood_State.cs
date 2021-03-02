@@ -30,6 +30,9 @@ public class LadybugGoForFood_State : FiniteStateMachine
 
         arriveAvoid = GetComponent<ArrivePlusAvoid>();
         manageFood = GetComponent<LadybugManageFood_State>();
+
+        manageFood.enabled = false;
+        arriveAvoid.enabled = false;
     }
 
     public override void Exit()
@@ -54,27 +57,19 @@ public class LadybugGoForFood_State : FiniteStateMachine
                 ChangeState(State.PERSUE);
                 break;
             case State.PERSUE:
-                if (SensingUtils.DistanceToTarget(gameObject, lbBlackboard.antTarget) < lbBlackboard.distanceToKill)
+                if (SensingUtils.DistanceToTarget(gameObject, lbBlackboard.antTarget) < lbBlackboard.distanceToKill && !lbBlackboard.transportingFood)
                 {
                     lbBlackboard.antTarget.transform.parent = transform;
+                    lbBlackboard.antTarget.transform.position = transform.position;
+                    lbBlackboard.antTarget.GetComponent<AntLife_FSM>().Exit();
                     lbBlackboard.transportingFood = true;
                     ChangeState(State.MANAGEFOOD);
-                    /*
-                    if (lbBlackboard.hunger > lbBlackboard.needToEatThreshold)
-                    {
-                        ChangeState(State.EAT);
-                    }
-                    else
-                    {
-                        ChangeState(State.BRINGBASE);
-                    }
-                    */
                 }
                 break;
             case State.MANAGEFOOD:
-                if (!lbBlackboard.transportingFood)
+                if (!lbBlackboard.transportingFood && lbBlackboard.antTarget != null)
                 {
-                    
+                    ChangeState(State.PERSUE);
                 }
                 break;
         }
@@ -101,6 +96,7 @@ public class LadybugGoForFood_State : FiniteStateMachine
             case State.PERSUE:
                 arriveAvoid.enabled = true;
                 arriveAvoid.target = lbBlackboard.antTarget;
+                arriveAvoid.closeEnoughRadius = lbBlackboard.distanceToKill;
                 break;
             case State.MANAGEFOOD:
                 manageFood.ReEnter();                
