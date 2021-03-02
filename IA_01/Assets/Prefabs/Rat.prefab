@@ -131,8 +131,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxAcceleration: 5
   maxSpeed: 15
-  maxAngularAcceleration: 150
-  maxAngularSpeed: 150
+  maxAngularAcceleration: 120
+  maxAngularSpeed: 120
   position: {x: 0, y: 0, z: 0}
   orientation: 0
   linearVelocity: {x: 0, y: 0, z: 0}
@@ -175,9 +175,9 @@ MonoBehaviour:
   detectEnemyRadius: 40
   enemyTag: Zapatos
   hideOffset: 33
-  closeEnoughRadius: 20
-  slowDownRadius: 23
-  timeToDesiredSpeed: 0.01
+  closeEnoughRadius: 15
+  slowDownRadius: 20
+  timeToDesiredSpeed: 0.5
   showWhisker: 1
   lookAheadLength: 40
   avoidDistance: 60
