@@ -10,6 +10,7 @@ public class FMD_Spider : FiniteStateMachine
     public State currentState = State.CHOOSING;
 
     private SpiderBlackboard blackboard;
+    ArrivePlusAvoid target;
     int randomFood = 0;
     float dist = 0;
 
@@ -17,6 +18,7 @@ public class FMD_Spider : FiniteStateMachine
     // Start is called before the first frame update
     void Start()
     {
+        target = GetComponent<ArrivePlusAvoid>();
         blackboard = GetComponent<SpiderBlackboard>();
     }
 
@@ -47,18 +49,16 @@ public class FMD_Spider : FiniteStateMachine
 
     public void Choosing()
     {
-        print("Choosing");
         blackboard.food = GameObject.FindGameObjectsWithTag("Food");
 
         randomFood = Random.Range(0, blackboard.food.Length);
-        gameObject.GetComponent<ArrivePlusAvoid>().target = blackboard.food[randomFood];
+        target.target = blackboard.food[randomFood];
         currentState = State.SEARCHING;
     }
 
     public void Serching()
     {
-        print("Serch");
-        if (gameObject.GetComponent<ArrivePlusAvoid>().target == null)
+        if (target.target == null)
         {
             currentState = State.CHOOSING;
         }
@@ -79,10 +79,9 @@ public class FMD_Spider : FiniteStateMachine
 
     public void Returning()
     {
-        print("Return");
         dist = Vector3.Distance(blackboard.spiderHouse.transform.position, this.gameObject.transform.position);
-        transform.position = Vector3.MoveTowards(transform.position, blackboard.spiderHouse.transform.position, blackboard.speed * Time.deltaTime);
-        gameObject.GetComponent<ArrivePlusAvoid>().target = blackboard.spiderHouse;
+        
+        target.target = blackboard.spiderHouse;
 
         if (dist < blackboard.dropFoodRadius)
         {
