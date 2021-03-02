@@ -45,7 +45,14 @@ public class LadybugManageFood_State : FiniteStateMachine
         switch (currentState)
         {
             case State.INITIAL:
-                ChangeState(State.BRINGBASE);
+                if (lbBlackboard.hunger > lbBlackboard.needToEatThreshold)
+                {
+                    ChangeState(State.EAT);
+                }
+                else
+                {
+                    ChangeState(State.BRINGBASE);
+                }
                 break;
             case State.EAT:
                 lbBlackboard.eatElapsedTime -= Time.deltaTime;
@@ -56,8 +63,6 @@ public class LadybugManageFood_State : FiniteStateMachine
                     lbBlackboard.transportingFood = false;
                     Destroy(lbBlackboard.antTarget);
                 }
-
-             
                 break;
             case State.BRINGBASE:
                 if (lbBlackboard.hunger > lbBlackboard.needToEatThreshold)
