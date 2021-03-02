@@ -197,7 +197,7 @@ MonoBehaviour:
   maxAcceleration: 5
   maxSpeed: 25
   maxAngularAcceleration: 45
-  maxAngularSpeed: 120
+  maxAngularSpeed: 360
   position: {x: 0, y: 0, z: 0}
   orientation: 0
   linearVelocity: {x: 0, y: 0, z: 0}
@@ -218,10 +218,10 @@ MonoBehaviour:
   wanderRadius: 20
   wanderOffset: 40
   showWhisker: 1
-  lookAheadLength: 40
-  avoidDistance: 50
+  lookAheadLength: 100
+  avoidDistance: 150
   secondaryWhiskerAngle: 35
-  secondaryWhiskerRatio: 1
+  secondaryWhiskerRatio: 0.8
   rotationalPolicy: 1
 --- !u!114 &7763905091516224775
 MonoBehaviour:
