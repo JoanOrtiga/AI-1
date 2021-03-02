@@ -10,7 +10,7 @@ public class LadybugNest : MonoBehaviour
     public int savedFood;
 
     public float hungerInc = 0.01f;
-    private float childHunger = 0;
+    public float childHunger = 0;
 
     public float needFoodThreshhold = 5f;
 
