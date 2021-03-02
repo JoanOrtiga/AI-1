@@ -72,9 +72,7 @@ public class FMD_Spider : FiniteStateMachine
                 currentState = State.RETURNING;
                 Destroy(blackboard.food[randomFood]);
             }
-
         }
-
     }
 
     public void Returning()

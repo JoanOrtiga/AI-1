@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseAttractor: {fileID: 0}
-  takeFoodRadius: 8
+  takeFoodRadius: 12
   antSpawner: {fileID: 0}
 --- !u!114 &5497769665715003032
 MonoBehaviour:
