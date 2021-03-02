@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ed689b24860cca4087dbbe0ca14c44a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  findHideSpotRadius: 400
+  findHideSpotRadius: 3
   hideObjectsTag: Obstaculo
   detectEnemyRadius: 40
   enemyTag: Zapatos
