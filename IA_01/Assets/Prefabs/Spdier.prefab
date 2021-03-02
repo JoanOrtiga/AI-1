@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 438725271859969560}
   - component: {fileID: 2314405113976784328}
   - component: {fileID: 508378389}
-  - component: {fileID: 508378394}
+  - component: {fileID: 772898827}
   m_Layer: 0
   m_Name: Spdier
   m_TagString: Untagged
@@ -99,8 +99,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spiderHouse: {fileID: 0}
   speed: 50
-  takeFoodRadius: 1
-  dropFoodRadius: 30
+  takeFoodRadius: 40
+  dropFoodRadius: 10
   food: []
 --- !u!114 &2314405113976784328
 MonoBehaviour:
@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 2
---- !u!114 &508378394
+--- !u!114 &772898827
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -144,8 +144,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 5736374779335585869}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05a7351400fffc349b5c0699488d25c7, type: 3}
+  m_Script: {fileID: 11500000, guid: 45002cd8b796da941835ae15d6a0419a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  closeEnoughRadius: 5
+  slowDownRadius: 20
+  timeToDesiredSpeed: 0.1
+  showWhisker: 1
+  lookAheadLength: 10
+  avoidDistance: 10.36
+  secondaryWhiskerAngle: 30
+  secondaryWhiskerRatio: 0.7
   rotationalPolicy: 1
