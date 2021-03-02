@@ -131,8 +131,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxAcceleration: 5
   maxSpeed: 15
-  maxAngularAcceleration: 150
-  maxAngularSpeed: 150
+  maxAngularAcceleration: 120
+  maxAngularSpeed: 120
   position: {x: 0, y: 0, z: 0}
   orientation: 0
   linearVelocity: {x: 0, y: 0, z: 0}
@@ -170,14 +170,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ed689b24860cca4087dbbe0ca14c44a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  findHideSpotRadius: 400
+  findHideSpotRadius: 3
   hideObjectsTag: Obstaculo
   detectEnemyRadius: 40
   enemyTag: Zapatos
   hideOffset: 33
-  closeEnoughRadius: 20
-  slowDownRadius: 23
-  timeToDesiredSpeed: 0.01
+  closeEnoughRadius: 15
+  slowDownRadius: 20
+  timeToDesiredSpeed: 0.5
   showWhisker: 1
   lookAheadLength: 40
   avoidDistance: 60

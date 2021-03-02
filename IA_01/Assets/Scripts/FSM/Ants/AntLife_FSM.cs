@@ -51,7 +51,7 @@ public class AntLife_FSM : FiniteStateMachine
             case State.FOLLOWING:
                 Follow();
                 break;
-            default:
+            case State.DEAD:
                 break;
         }
     }
@@ -75,7 +75,6 @@ public class AntLife_FSM : FiniteStateMachine
                 flockingAroundPlusAvoid.enabled = true;
                 break;
             case State.DEAD:
-
                 break;
         }
 
@@ -89,9 +88,13 @@ public class AntLife_FSM : FiniteStateMachine
         if (food != null)
         {
             antBlackBoard.antSpawner.SpawnNewAnt();
+            AntBlackboard.score.foodNumber++;
             Destroy(food);
         }
     }
 
-   
+    public void Die()
+    {
+        ChangeState(State.DEAD);
+    }
 }
