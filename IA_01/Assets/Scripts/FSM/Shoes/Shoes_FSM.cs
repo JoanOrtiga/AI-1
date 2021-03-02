@@ -15,6 +15,7 @@ public class Shoes_FSM : FiniteStateMachine
     }
 
     public State currentState = State.INITIAL;
+    public int dropFoodRate = 10;
 
     private ShoesBlackboard shoesBlackboard;
     private WanderPlusAvoid wanderPlusAvoid;
@@ -74,11 +75,29 @@ public class Shoes_FSM : FiniteStateMachine
 
     void Wander()
     {
-        ShoeRKillingWithRadius();
-        ShoeLKillingWithRadius();
+        ShoeKillingWithRadius();
+        //ShoeRKillingWithRadius();
+        //ShoeLKillingWithRadius();
         DropFood();
     }
 
+    public void ShoeKillingWithRadius()
+    {
+        int i;
+
+        for (i = 0; i <= 5; i++)
+        {
+            Debug.Log(i);
+            GameObject ant = SensingUtils.FindInstanceWithinRadius(shoesBlackboard.shoes[i], "ANT", shoesBlackboard.radius);
+
+            if (ant != null)
+            {
+                Destroy(ant);
+            }
+        }
+        //i = -1;
+    }
+    /*
     public void ShoeRKillingWithRadius()
     {
         GameObject ant = SensingUtils.FindInstanceWithinRadius(shoesBlackboard.shoeR, "ANT", shoesBlackboard.radius);
@@ -97,12 +116,12 @@ public class Shoes_FSM : FiniteStateMachine
             Destroy(ant);
         }
     }
-
+    */
     public void DropFood()
     {
         shoesBlackboard.counter += Time.deltaTime;
 
-        if (shoesBlackboard.counter >= 10f)
+        if (shoesBlackboard.counter >= dropFoodRate)
         {
             Instantiate(shoesBlackboard.food, shoesBlackboard.foodSpawn.transform.position, shoesBlackboard.foodSpawn.transform.rotation);
             shoesBlackboard.counter = 0f;
