@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class FMD_Spider : FiniteStateMachine
 {
-    public enum State { SEARCHING, RETURNING, CHOOSING};
-    public State currentState = State.CHOOSING;
+    public enum State { INITIAL,SEARCHING, RETURNING, CHOOSING};
+    public State currentState = State.INITIAL;
 
     private SpiderBlackboard blackboard;
     ArrivePlusAvoid target;
@@ -16,10 +16,22 @@ public class FMD_Spider : FiniteStateMachine
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         target = GetComponent<ArrivePlusAvoid>();
         blackboard = GetComponent<SpiderBlackboard>();
+    }
+
+    public override void Exit()
+    {
+        
+        base.Exit();
+    }
+
+    public override void ReEnter()
+    {
+        currentState = State.INITIAL;
+        base.ReEnter();
     }
 
     // Update is called once per frame
@@ -27,6 +39,10 @@ public class FMD_Spider : FiniteStateMachine
     {
         switch (currentState)
         {
+            case State.INITIAL:
+                Choosing();
+                break;
+
             case State.CHOOSING:
                 Choosing();              
                 break;
