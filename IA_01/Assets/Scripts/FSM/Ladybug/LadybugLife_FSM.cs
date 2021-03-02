@@ -61,7 +61,10 @@ public class LadybugLife_FSM : FiniteStateMachine
                 lbBlackboard.restElapsedTime -= Time.deltaTime;
 
                 if (lbBlackboard.restElapsedTime <= 0)
+                {
                     ChangeState(State.WANDER);
+                    return;
+                }
                 break;
 
             case State.WANDER:
@@ -70,6 +73,7 @@ public class LadybugLife_FSM : FiniteStateMachine
                 if(lbBlackboard.tiredElapsedTime <= 0)
                 {
                     ChangeState(State.REST);
+                    return;
                 }
 
                 lbBlackboard.antTarget = SensingUtils.FindInstanceWithinRadius(gameObject, "ANT", lbBlackboard.seeDistance);
@@ -77,17 +81,17 @@ public class LadybugLife_FSM : FiniteStateMachine
                 if (lbBlackboard.antTarget != null)
                 {
                     ChangeState(State.GOFORFOOD);
+                    return;
                 }
                 break;
 
             case State.GOFORFOOD:
                 lbBlackboard.antTarget = SensingUtils.FindInstanceWithinRadius(gameObject, "ANT", lbBlackboard.seeDistance);
 
-                Debug.Log(lbBlackboard.antTarget.name);
-
                 if (lbBlackboard.antTarget == null)
                 {
                     ChangeState(State.WANDER);
+                    return;
                 }
                 break;
         }

@@ -41,6 +41,7 @@ namespace Steerings
 			Vector3 requiredAcceleration;
 
 			// compute direction and distance to target
+
 			directionToTarget = target.transform.position - ownKS.position;
 			distanceToTarget = directionToTarget.magnitude;
 

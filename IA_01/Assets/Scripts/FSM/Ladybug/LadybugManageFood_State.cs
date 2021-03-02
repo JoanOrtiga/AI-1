@@ -48,10 +48,12 @@ public class LadybugManageFood_State : FiniteStateMachine
                 if (lbBlackboard.hunger > lbBlackboard.needToEatThreshold)
                 {
                     ChangeState(State.EAT);
+                    return;
                 }
                 else
                 {
                     ChangeState(State.BRINGBASE);
+                    return;
                 }
                 break;
             case State.EAT:
@@ -68,9 +70,13 @@ public class LadybugManageFood_State : FiniteStateMachine
                 if (lbBlackboard.hunger > lbBlackboard.needToEatThreshold)
                 {
                     ChangeState(State.EAT);
+                    return;
                 }
 
                 arriveAvoid.target = lbBlackboard.nest.FoodTarget();
+
+                if (arriveAvoid.target == null)
+                    return;
 
                 if (SensingUtils.DistanceToTarget(gameObject, arriveAvoid.target) < lbBlackboard.distanceToInteract)
                 {

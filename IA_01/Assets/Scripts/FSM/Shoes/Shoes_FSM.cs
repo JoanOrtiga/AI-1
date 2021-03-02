@@ -87,7 +87,6 @@ public class Shoes_FSM : FiniteStateMachine
 
         for (i = 0; i <= 5; i++)
         {
-            Debug.Log(i);
             GameObject ant = SensingUtils.FindInstanceWithinRadius(shoesBlackboard.shoes[i], "ANT", shoesBlackboard.radius);
 
             if (ant != null)

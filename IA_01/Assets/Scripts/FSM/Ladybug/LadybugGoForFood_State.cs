@@ -58,10 +58,12 @@ public class LadybugGoForFood_State : FiniteStateMachine
                 break;
             case State.PURSUE:
 
-                if (lbBlackboard.antTarget == null)
+                arriveAvoid.target = lbBlackboard.antTarget;
+
+                if (arriveAvoid.target == null)
                     break;
 
-                if (SensingUtils.DistanceToTarget(gameObject, lbBlackboard.antTarget) < lbBlackboard.distanceToKill && !lbBlackboard.transportingFood)
+                if (SensingUtils.DistanceToTarget(gameObject, arriveAvoid.target) < lbBlackboard.distanceToKill && !lbBlackboard.transportingFood)
                 {
                     lbBlackboard.antTarget.transform.parent = transform;
                     lbBlackboard.antTarget.transform.position = transform.position;
@@ -100,9 +102,9 @@ public class LadybugGoForFood_State : FiniteStateMachine
             case State.INITIAL:
                 break;
             case State.PURSUE:
-                arriveAvoid.enabled = true;
                 arriveAvoid.target = lbBlackboard.antTarget;
                 arriveAvoid.closeEnoughRadius = lbBlackboard.distanceToKill;
+                arriveAvoid.enabled = true;
                 break;
             case State.MANAGEFOOD:
                 manageFood.ReEnter();                
