@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 7763905091516224774}
   m_Layer: 0
   m_Name: Shoes
-  m_TagString: Untagged
+  m_TagString: Zapatos
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -194,8 +194,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f7cbbdf0d23565448d7ea26fd3b99ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxAcceleration: 2
-  maxSpeed: 10
+  maxAcceleration: 5
+  maxSpeed: 25
   maxAngularAcceleration: 45
   maxAngularSpeed: 120
   position: {x: 0, y: 0, z: 0}
@@ -236,6 +236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
+  dropFoodRate: 10
 --- !u!114 &7763905091516224774
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,8 +251,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   food: {fileID: 2890598012177205243, guid: fc24576ba1b7a314096bf303fb6b4e97, type: 3}
   radius: 10
-  shoeL: {fileID: 7763905092297022873}
-  shoeR: {fileID: 7763905092600142188}
+  shoes: []
   foodSpawn: {fileID: 7763905092017221124}
   counter: 0
 --- !u!1 &7763905092017221124
