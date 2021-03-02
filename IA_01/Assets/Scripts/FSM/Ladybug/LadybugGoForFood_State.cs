@@ -14,7 +14,7 @@ public class LadybugGoForFood_State : FiniteStateMachine
 {
     public enum State
     {
-        INITIAL, PERSUE, MANAGEFOOD
+        INITIAL, PURSUE, MANAGEFOOD
     }
 
     public State currentState = State.INITIAL;
@@ -54,9 +54,9 @@ public class LadybugGoForFood_State : FiniteStateMachine
         switch (currentState)
         {
             case State.INITIAL:
-                ChangeState(State.PERSUE);
+                ChangeState(State.PURSUE);
                 break;
-            case State.PERSUE:
+            case State.PURSUE:
 
                 if (lbBlackboard.antTarget == null)
                     break;
@@ -75,7 +75,7 @@ public class LadybugGoForFood_State : FiniteStateMachine
             case State.MANAGEFOOD:
                 if (!lbBlackboard.transportingFood && lbBlackboard.antTarget != null)
                 {
-                    ChangeState(State.PERSUE);
+                    ChangeState(State.PURSUE);
                 }
                 break;
         }
@@ -87,7 +87,7 @@ public class LadybugGoForFood_State : FiniteStateMachine
         {
             case State.INITIAL:
                 break;
-            case State.PERSUE:
+            case State.PURSUE:
                 arriveAvoid.enabled = false;
                 break;
             case State.MANAGEFOOD:
@@ -99,7 +99,7 @@ public class LadybugGoForFood_State : FiniteStateMachine
         {
             case State.INITIAL:
                 break;
-            case State.PERSUE:
+            case State.PURSUE:
                 arriveAvoid.enabled = true;
                 arriveAvoid.target = lbBlackboard.antTarget;
                 arriveAvoid.closeEnoughRadius = lbBlackboard.distanceToKill;
